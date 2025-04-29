@@ -2,29 +2,30 @@ pipeline {
     agent any
 
     stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/AamirHussainoo7/another-attempt.git'  // Replace with your actual repository URL
+            }
+        }
+
         stage('Build') {
             steps {
-                sh 'npm install'
-                sh 'npm run build'
+                echo 'No build steps needed for static files.'
             }
         }
+
         stage('Test') {
             steps {
-                sh 'npm run test'
+                echo 'No tests defined. Add HTML/CSS linters if needed.'
             }
         }
+
         stage('Deploy') {
             steps {
-                sh 'npm run deploy'
+                echo 'Deploying static files...'
+                // Example: Copy files to a web directory
+                sh 'cp -r * /var/www/html/'  // Adjust as needed for your server
             }
-        }
-    }
-    post {
-        success {
-            echo 'Build and deployment successful!'
-        }
-        failure {
-            echo 'Build and deployment failed!'
         }
     }
 }
