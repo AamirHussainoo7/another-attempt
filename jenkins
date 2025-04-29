@@ -20,12 +20,15 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
-            steps {
-                echo 'Deploying static files...'
-                // Adjust the path as needed
-                sh 'cp -r * /var/www/html/'
-            }
-        }
+      stage('Deploy') {
+    steps {
+        echo 'Deploying static files locally...'
+        sh '''
+            mkdir -p deploy_dir
+            cp -r about.html blog-page.html blog_single.html css images index.html js products.html rates.html services.html deploy_dir/
+        '''
+    }
+}
+
     }
 }
