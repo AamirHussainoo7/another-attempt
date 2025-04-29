@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/AamirHussainoo7/another-attempt.git'  // Replace with your actual repository URL
+                git branch: 'main', url: 'https://github.com/AamirHussainoo7/another-attempt.git'
             }
         }
 
@@ -23,8 +23,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying static files...'
-                // Example: Copy files to a web directory
-                sh 'cp -r * /var/www/html/'  // Adjust as needed for your server
+                // Adjust the path as needed
+                sh 'cp -r * /var/www/html/'
             }
         }
     }
